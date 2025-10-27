@@ -12,8 +12,8 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: any) => {
+    e.preventDefault?.();
     onLogin();
   };
 
@@ -40,7 +40,8 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
                 type="email"
                 placeholder="Email o número de teléfono"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e: any) => setEmail(e.target.value)}
+                autoFocus
                 className="bg-[#333] border-0 text-white placeholder:text-gray-400 h-12 rounded"
                 required
               />
@@ -51,7 +52,7 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
                 type="password"
                 placeholder="Contraseña"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e: any) => setPassword(e.target.value)}
                 className="bg-[#333] border-0 text-white placeholder:text-gray-400 h-12 rounded"
                 required
               />
@@ -63,6 +64,20 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
             >
               Iniciar sesión
             </Button>
+
+            {/* Quick guest/login for development/testing */}
+            <div className="mt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  // quick dev shortcut to bypass form validation and login
+                  onLogin();
+                }}
+                className="w-full bg-gray-700 hover:bg-gray-600 text-white h-10 rounded text-sm"
+              >
+                Entrar como invitado
+              </button>
+            </div>
 
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
